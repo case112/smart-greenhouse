@@ -11,19 +11,20 @@ counter = 0
 time.sleep(2)
 
 try:
-    print 'battery charger on' 
+    print('Battery charging')
     gpio.output(12, False)
-    ## Relay switches the charger on for 6 hours, if it gets done sooner the charger shuts itself off
-    time.sleep(22000)
-    print 'battery charger relay off'
+    ## Relay switches the charger on for time.sleep(seconds), if it gets done sooner the charger shuts itself off
+    time.sleep(5000) #seconds
+    print('Charger off')
     gpio.output(12, True)
 
 except KeyboardInterrupt:
     # exits when you press CTRL+C
-    print "CTRL-C pressed"
+    print("CTRL-C pressed")
 
 except:
-    print "Other error occurred!"
+    print("Other error occurred!")
 
 finally:
     gpio.cleanup()
+

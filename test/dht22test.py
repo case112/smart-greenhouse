@@ -7,6 +7,7 @@ dhtDevice = adafruit_dht.DHT22(board.D27)
 
 counter = 0
 avg_temp = 0
+avg_hum = 0
  
 while counter < 10:
     try:
@@ -15,6 +16,7 @@ while counter < 10:
         humidity = dhtDevice.humidity
         counter += 1
         avg_temp += temperature
+        avg_hum += humidity
         
         print(
             "Temp: {:.1f} C    Humidity: {}% ".format(
@@ -28,6 +30,11 @@ while counter < 10:
  
     time.sleep(5.0)
 
-print("Average temp: {:.1f} C ".format(avg_temp))
+print(
+    "Average Temp: {:.1f} C    Average Humidity: {}% ".format(
+        avg_temp/counter, avg_hum/counter
+    )
+)
+
 
 
