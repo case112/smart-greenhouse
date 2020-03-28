@@ -28,3 +28,6 @@ https://learn.adafruit.com/circuitpython-on-raspberrypi-linux/installing-circuit
 
 DS18B20:
 https://www.circuitbasics.com/raspberry-pi-ds18b20-temperature-sensor-tutorial/
+
+Chirp soil sensor:
+https://github.com/ageir/chirp-rpi
