@@ -7,7 +7,7 @@ from datetime import datetime
 
 def get_dht22_data(device):
     # Initialize the dht device, with data pin connected to:
-    dhtDevice = adafruit_dht.DHT22(device)
+    dhtDevice = device
 
     counter = 0
     avg_temp = 0
@@ -26,7 +26,7 @@ def get_dht22_data(device):
             humidity = dhtDevice.humidity
 
             # Not counting false temperature spikes
-            if temperature > 1 or temperature < 45:
+            if temperature > 1 and temperature < 45 and humidity > 0 and humidity < 100:
                 avg_temp += temperature
                 avg_hum += humidity
                 counter += 1
@@ -41,13 +41,14 @@ def get_dht22_data(device):
             # Errors happen fairly often, DHT's are hard to read, just keep going
             print(error.args[0])
     
-        time.sleep(2.0)
+        time.sleep(4.0)
 
-    data_list.append('Temphum cabinet')
+    #data_list.append('Temphum cabinet')
     data_list.append(round(avg_temp/counter, 1))
     data_list.append(round(avg_hum/counter, 1))
     now = datetime.now()
     data_list.append(now.strftime("%Y-%m-%d %H:%M:%S"))
     
     return data_list
+
 
