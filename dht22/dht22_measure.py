@@ -3,10 +3,11 @@ import board
 import adafruit_dht
 from datetime import datetime
  
+# Cabinet: board.D27
 
-def dht_data():
+def get_dht22_data(device):
     # Initialize the dht device, with data pin connected to:
-    dhtDevice = adafruit_dht.DHT22(board.D27)
+    dhtDevice = adafruit_dht.DHT22(device)
 
     counter = 0
     avg_temp = 0
@@ -47,5 +48,6 @@ def dht_data():
     data_list.append(round(avg_hum/counter, 1))
     now = datetime.now()
     data_list.append(now.strftime("%Y-%m-%d %H:%M:%S"))
+    
     return data_list
 
