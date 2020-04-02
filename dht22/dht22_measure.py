@@ -48,6 +48,14 @@ def get_dht22_data(device, location):
     data_list.append(round(avg_hum/counter, 1))
     now = datetime.now()
     data_list.append(now.strftime("%Y-%m-%d %H:%M:%S"))
+
+    print(
+                "{}, Temp: {:.1f} C    Humidity: {}% ".format(
+                    location,
+                    avg_temp/counter,
+                    avg_hum/counter
+                )
+            )
     
     return data_list
 
