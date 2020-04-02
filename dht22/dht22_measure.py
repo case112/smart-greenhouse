@@ -3,7 +3,6 @@ import board
 import adafruit_dht
 from datetime import datetime
  
-# Cabinet: board.D27
 
 def get_dht22_data(device, location):
     # Initialize the dht device, with data pin connected to:
@@ -50,7 +49,7 @@ def get_dht22_data(device, location):
     data_list.append(now.strftime("%Y-%m-%d %H:%M:%S"))
 
     print(
-                "{}, Temp: {:.1f} C    Humidity: {}% ".format(
+                "{}, Temp: {:.1f} C    Humidity: {:.1f}% ".format(
                     location,
                     avg_temp/counter,
                     avg_hum/counter
