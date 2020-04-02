@@ -5,7 +5,7 @@ from datetime import datetime
  
 # Cabinet: board.D27
 
-def get_dht22_data(device):
+def get_dht22_data(device, location):
     # Initialize the dht device, with data pin connected to:
     dhtDevice = device
 
@@ -43,7 +43,7 @@ def get_dht22_data(device):
     
         time.sleep(4.0)
 
-    #data_list.append('Temphum cabinet')
+    data_list.append(location)
     data_list.append(round(avg_temp/counter, 1))
     data_list.append(round(avg_hum/counter, 1))
     now = datetime.now()
