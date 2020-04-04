@@ -1,3 +1,14 @@
+### DHT22 SENSORS ###
+
+##Greenhouse sensor1
+#adafruit_dht.DHT22(board.D17)
+##Greenhouse sensor2
+#adafruit_dht.DHT22(board.D22)
+##Greenhouse cabinet sensor
+#adafruit_dht.DHT22(board.D27)
+##Outside sensor
+#adafruit_dht.DHT22(board.D18)
+
 import time
 import board
 import adafruit_dht
@@ -49,12 +60,12 @@ def get_dht22_data(device, location):
     data_list.append(now.strftime("%Y-%m-%d %H:%M:%S"))
 
     print(
-                "{}, Temp: {:.1f} C    Humidity: {:.1f}% ".format(
-                    location,
-                    avg_temp/counter,
-                    avg_hum/counter
-                )
-            )
+        "{}, Temp: {:.1f} C    Humidity: {:.1f}% ".format(
+            location,
+            avg_temp/counter,
+            avg_hum/counter
+        )
+    )
     
     return data_list
 
