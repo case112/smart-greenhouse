@@ -10,6 +10,7 @@
 #adafruit_dht.DHT22(board.D18)
 
 import time
+import pytz
 import board
 import adafruit_dht
 from datetime import datetime
@@ -29,8 +30,8 @@ def get_dht22_data(device, location):
     humidity = dhtDevice.humidity
     time.sleep(2.0)
 
-    # Try to take 5 measurements for better accuracy 
-    while counter < 5:
+    # Try to take 3 measurements for better accuracy 
+    while counter < 3:
         try:
             temperature = dhtDevice.temperature
             humidity = dhtDevice.humidity

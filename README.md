@@ -9,7 +9,8 @@
 - make sure that you are using pip3, python3
 - pip3 install RPI.GPIO
 - pip3 install adafruit-blinka
-- pip install python-decouple
+- pip3 install python-decouple
+- pip3 install pytz
 
 ## DHT22 temperature and humidity sensor library
 - pip3 install adafruit-circuitpython-dht
@@ -27,6 +28,12 @@
 - sudo ln -s /usr/local/lib/heroku/bin/heroku /usr/local/bin/heroku
 - heroku update
 - DB conn instructions https://github.com/EverWinter23/postgres-heroku
+
+- heroku pg:psql --app appname
+- SET TIMEZONE='posix/Europe/Tallinn';
+- SHOW TIMEZONE;
+- heroku pg:killall
+
 
 
 
