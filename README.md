@@ -9,6 +9,7 @@
 - make sure that you are using pip3, python3
 - pip3 install RPI.GPIO
 - pip3 install adafruit-blinka
+- pip install python-decouple
 
 ## DHT22 temperature and humidity sensor library
 - pip3 install adafruit-circuitpython-dht
@@ -16,6 +17,19 @@
 
 ## DS18B20 temperature sensor
 - 
+
+## Install Postgres client and Heroku CLI for DB connection
+- sudo apt-get install libpq-dev
+- pip install psycopg2-binary
+- wget https://cli-assets.heroku.com/branches/stable/heroku-linux-arm.tar.gz
+- mkdir -p /usr/local/lib /usr/local/bin
+- sudo tar -xvzf heroku-linux-arm.tar.gz -C /usr/local/lib
+- sudo ln -s /usr/local/lib/heroku/bin/heroku /usr/local/bin/heroku
+- heroku update
+- DB conn instructions https://github.com/EverWinter23/postgres-heroku
+
+
+
 
 Cloning git repository
 - git init

@@ -10,7 +10,7 @@ def get_data(device, location):
     # Try to take measurement multiple times in case of RuntimeError
     while not token:
         try:
-            get_dht22_data(device, location)
+            data = get_dht22_data(device, location)
             token = True
 
         except RuntimeError as error:
@@ -18,3 +18,5 @@ def get_data(device, location):
             print(error.args[0])
 
         time.sleep(2.0)
+
+    return data
