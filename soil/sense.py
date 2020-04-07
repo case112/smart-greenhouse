@@ -15,10 +15,10 @@ def sense(sensor, min, max, address):
     data_list = []
 
     # Initialize the sensor.
-    chirp = chirp.Chirp(address,
+    chirpsense = chirp.Chirp(address=address,
                         read_moist=True,
                         read_temp=True,
-                        read_light=False,
+                        read_light=True,
                         min_moist=min_moist,
                         max_moist=max_moist,
                         temp_scale='celsius',
@@ -26,12 +26,12 @@ def sense(sensor, min, max, address):
 
     # First measurement could be false
     try:
-        chirp.trigger()
+        chirpsense.trigger()
         print(
             "First pull: Moisture value: {}, Moisture: {}%  Temp: {}% ".format(
-                chirp.moist_percent,
-                chirp.moist,
-                chirp.temp
+                chirpsense.moist_percent,
+                chirpsense.moist,
+                chirpsense.temp
             )
         )
 
@@ -42,20 +42,20 @@ def sense(sensor, min, max, address):
     # Try to take 3 measurements for better accuracy 
     while counter < 3:
         try:
-            chirp.trigger()
+            chirpsense.trigger()
 
             # Not counting false data spikes
-            if chirp.temp > -3 and chirp.temp < 47 and chirp.moist > min_moist and chirp.moist < max_moist:
-                avg_moist += chirp.moist
-                avg_moist_percent += chirp.moist_percent
-                avg_temp += chirp.temp
+            if chirpsense.temp > -3 and chirpsense.temp < 47 and chirpsense.moist > min_moist and chirpsense.moist < max_moist:
+                avg_moist += chirpsense.moist
+                avg_moist_percent += chirpsense.moist_percent
+                avg_temp += chirpsense.temp
                 counter += 1
             
             print(
                 "Moisture value: {}, Moisture: {}%  Temp: {}% ".format(
-                    chirp.moist_percent,
-                    chirp.moist,
-                    chirp.temp
+                    chirpsense.moist_percent,
+                    chirpsense.moist,
+                    chirpsense.temp
                 )
             )
     
@@ -74,3 +74,5 @@ def sense(sensor, min, max, address):
     print(data_list)
     
     return data_list
+
+sense('Sensor1', 280, 790, 0x24)

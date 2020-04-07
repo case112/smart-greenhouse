@@ -29,12 +29,10 @@
 - heroku update
 - DB conn instructions https://github.com/EverWinter23/postgres-heroku
 
-- heroku pg:psql --app appname
-- SET TIMEZONE='posix/Europe/Tallinn';
-- SHOW TIMEZONE;
-- heroku pg:killall
+
 
 ## Chirp soil sensor
+- 
 - install https://github.com/ageir/chirp-rpi chirp.py to  your python/modules
 
 
