@@ -67,7 +67,7 @@ def sense(sensor, min, max, address):
         time.sleep(4.0)
 
     data_list.append(sensor)
-    data_list.append(round(avg_moist/counter, 1))
+    data_list.append(int(avg_moist/counter))
     data_list.append(round(avg_moist_percent/counter, 1))
     data_list.append(round(avg_temp/counter, 1))
     now = datetime.now()
