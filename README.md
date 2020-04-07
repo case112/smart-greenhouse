@@ -32,8 +32,7 @@
 
 
 ## Chirp soil sensor
-- 
-- install https://github.com/ageir/chirp-rpi chirp.py to  your python/modules
+- Download Chirp sensor class from: https://github.com/ageir/chirp-rpi chirp.py
 
 
 

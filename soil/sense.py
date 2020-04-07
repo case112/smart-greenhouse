@@ -28,9 +28,9 @@ def sense(sensor, min, max, address):
     try:
         chirpsense.trigger()
         print(
-            "First pull: Moisture value: {}, Moisture: {}%  Temp: {}% ".format(
-                chirpsense.moist_percent,
+            "First pull: Moisture value: {}, Moisture: {}%  Temp: {}C ".format(
                 chirpsense.moist,
+                chirpsense.moist_percent,
                 chirpsense.temp
             )
         )
@@ -76,5 +76,3 @@ def sense(sensor, min, max, address):
     print(data_list)
     
     return data_list
-
-sense('Sensor1', 240, 790, 0x24)

@@ -1,9 +1,12 @@
-#echo DATABASE_URL=$(heroku config:get DATABASE_URL -a appname) > conf.txt
+#echo DATABASE_URL=$(heroku config:get DATABASE_URL -a appname) > .env
 import psycopg2
 import os
-from decouple import config
+from decouple import Config, RepositoryEnv
 
 def insert(data):
+    
+    DOTENV_FILE = '/home/pi/Desktop/smart-greenhouse/.env'
+    env_config = Config(RepositoryEnv(DOTENV_FILE))
 
     sensor = data[0]
     moisture_value = data[1]
@@ -12,13 +15,13 @@ def insert(data):
     date = data[4]
 
     # Read database connection url from .env
-    DATABASE_URL = config('DATABASE_URL')
+    DATABASE_URL = env_config.get('DATABASE_URL')
 
     postgres_insert_query = """
                             INSERT INTO data_chirp (
                                 sensor,
                                 moisture_value,
-                                moisture
+                                moisture,
                                 temperature,
                                 date
                             ) 
