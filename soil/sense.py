@@ -50,11 +50,13 @@ def sense(sensor, min, max, address):
                 avg_moist_percent += chirpsense.moist_percent
                 avg_temp += chirpsense.temp
                 counter += 1
+            else:
+                counter += 0.3
             
             print(
-                "Moisture value: {}, Moisture: {}%  Temp: {}% ".format(
-                    chirpsense.moist_percent,
+                "Moisture value: {}, Moisture: {}%  Temp: {}C ".format(
                     chirpsense.moist,
+                    chirpsense.moist_percent,
                     chirpsense.temp
                 )
             )
@@ -75,4 +77,4 @@ def sense(sensor, min, max, address):
     
     return data_list
 
-sense('Sensor1', 280, 790, 0x24)
+sense('Sensor1', 240, 790, 0x24)
