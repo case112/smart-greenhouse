@@ -34,6 +34,8 @@
 - SHOW TIMEZONE;
 - heroku pg:killall
 
+## Chirp soil sensor
+- install https://github.com/ageir/chirp-rpi chirp.py to  your python/modules
 
 
 
