@@ -16,9 +16,7 @@ import adafruit_dht
 from datetime import datetime
  
 
-def get_dht22_data(device, location):
-    # Initialize the dht device, with data pin connected to:
-    dhtDevice = device
+def dht22_measure(device, location):
 
     counter = 0
     avg_temp = 0
@@ -26,15 +24,15 @@ def get_dht22_data(device, location):
     data_list = []
     
     # Initial measurement could be false
-    temperature = dhtDevice.temperature
-    humidity = dhtDevice.humidity
+    temperature = device.temperature
+    humidity = device.humidity
     time.sleep(2.0)
 
     # Try to take 3 measurements for better accuracy 
     while counter < 3:
         try:
-            temperature = dhtDevice.temperature
-            humidity = dhtDevice.humidity
+            temperature = device.temperature
+            humidity = device.humidity
 
             # Not counting false temperature spikes
             if temperature > 1 and temperature < 45 and humidity > 0 and humidity < 100:
@@ -61,10 +59,11 @@ def get_dht22_data(device, location):
     data_list.append(now.strftime("%Y-%m-%d %H:%M:%S"))
 
     print(
-        "{}, Temp: {:.1f} C    Humidity: {:.1f}% ".format(
+        "{}, Temp: {:.1f} C    Humidity: {:.1f}%, {}".format(
             location,
             avg_temp/counter,
-            avg_hum/counter
+            avg_hum/counter,
+            now
         )
     )
     
