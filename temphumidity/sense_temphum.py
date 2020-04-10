@@ -10,13 +10,12 @@
 #adafruit_dht.DHT22(board.D18)
 
 import time
-import pytz
 import board
 import adafruit_dht
 from datetime import datetime
  
 
-def dht22_measure(device, location):
+def sense_temphum(device, location):
 
     counter = 0
     avg_temp = 0
@@ -35,7 +34,7 @@ def dht22_measure(device, location):
             humidity = device.humidity
 
             # Not counting false temperature spikes
-            if temperature > 1 and temperature < 45 and humidity > 0 and humidity < 100:
+            if temperature > -5 and temperature < 45 and humidity > 0 and humidity < 100:
                 avg_temp += temperature
                 avg_hum += humidity
                 counter += 1

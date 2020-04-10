@@ -10,7 +10,7 @@
 - pip3 install RPI.GPIO
 - pip3 install adafruit-blinka
 - pip3 install python-decouple
-- pip3 install pytz
+
 
 ## DHT22 temperature and humidity sensor library
 - pip3 install adafruit-circuitpython-dht

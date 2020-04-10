@@ -2,7 +2,7 @@ import chirp
 import time
 from datetime import datetime
 
-def sense(sensor, min, max, address):
+def sense_soil(sensor, min, max, address):
 
     # The highest and lowest calibrated values
     min_moist = min
@@ -45,7 +45,7 @@ def sense(sensor, min, max, address):
             chirpsense.trigger()
 
             # Not counting false data spikes
-            if chirpsense.temp > -3 and chirpsense.temp < 47 and chirpsense.moist > min_moist and chirpsense.moist < max_moist:
+            if chirpsense.temp > -8 and chirpsense.temp < 47 and chirpsense.moist > min_moist and chirpsense.moist < max_moist:
                 avg_moist += chirpsense.moist
                 avg_moist_percent += chirpsense.moist_percent
                 avg_temp += chirpsense.temp

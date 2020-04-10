@@ -1,7 +1,7 @@
 import time
 import board
 import adafruit_dht
-from dht22_measure import dht22_measure
+from sense_temphum import sense_temphum
 
 def get_data(device, location):
 
@@ -10,7 +10,7 @@ def get_data(device, location):
     # Try to take measurement multiple times in case of RuntimeError
     while not token:
         try:
-            data = dht22_measure(device, location)
+            data = sense_temphum(device, location)
             token = True
             print('Token True')
             
