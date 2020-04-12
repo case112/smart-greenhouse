@@ -28,5 +28,6 @@ def sense_water():
     data_list.append(now.strftime("%Y-%m-%d %H:%M:%S"))
     time.sleep(2)
 
+    print(data_list)
     return data_list
 
