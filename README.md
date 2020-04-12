@@ -4,7 +4,7 @@
 
 ## About
 
-** !NB! codebase is currently being updated and it might not work as expected !NB! **
+**NB! codebase is currently being updated and it might not work as expected NB!**
 
 **Greenhouse automation with Raspberry Pi**
 
