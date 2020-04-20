@@ -8,6 +8,7 @@ def state():
     counter = 0
     value = 0
     data_list = []
+    sensor = 'S1-2'
 
     while counter < 5:
         gpio.setmode(gpio.BCM)
@@ -29,7 +30,7 @@ def state():
     else:
         position = True
 
-
+    data_list.append(sensor)
     data_list.append(position)
     now = datetime.now()
     data_list.append(now.strftime("%Y-%m-%d %H:%M:%S"))
