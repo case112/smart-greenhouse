@@ -4,8 +4,6 @@
 
 ## About
 
-**NB! codebase is currently being updated and it might not work as expected NB!**
-
 **Greenhouse automation with Raspberry Pi**
 
 This is a write up of an automated greenhouse that regulates the inside temperature by automatically opening 2 windows on either side of the building. Addition to that it waters the plants as required. 
@@ -20,10 +18,10 @@ In addiditon to logging the Raspberry makes decisions according to the temperatu
 - 1 - DS18B20 temperature sensor
 - 2 - Chirp soil moisture sensors
 - 2 - 5v to 3.3v logic converters
-- 2 - voltage regulators
+- 2 - 12V to 5V voltage regulators
 - 1 - 4x 12V realy module
 - 1 - Double BTS7960B DC 43A motor driver
-- 6 - Stop swiches to get info about window movement/state
+- 6 - Stop swiches to get info about window movement/state and to stop over-extension
 - 2 - DC Motors for window movement
 - 1 - DC water pump
 - 1 - 12V battery
@@ -37,6 +35,7 @@ The software consists of 5 main components. Most of it is currently being update
 - temphumidity - measuring and logging temperature and humidity data
 - water - measuring, logging water temperature and activating pump
 - windows - measuring and logging window data
+- logging errors (coming soon)
 
 
 
@@ -77,3 +76,17 @@ The software consists of 5 main components. Most of it is currently being update
 - [DS18B20](https://www.circuitbasics.com/raspberry-pi-ds18b20-temperature-sensor-tutorial/ "Link")
 - [Chirp](https://github.com/ageir/chirp-rpi "Link")
 - [Heroku Postgres Setup](https://github.com/EverWinter23/postgres-heroku "Link")
+
+## Issues with 'lost address' on Chirp soil sensor
+- One common issue is when sensors are hot plugged into the running bus -
+the set-address command is not protected with any kind of
+checksum and a stray communication on the bus might get interpreted as a
+set-address command. If this is the case, bus scan would show the sensor
+on another address but Raspberry Pi is not able to 'see' that new address.
+- [Arduino sketch to set address on Chirp](https://gist.github.com/Miceuz/3f40a1614c749e04796a "Link")
+
+## Todos:
+- Setting up with new DB models
+- Log system, everyting to csv and then upload to db?
+- Voltage
+- Example of crontab
