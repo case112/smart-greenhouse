@@ -14,6 +14,7 @@ In addiditon to logging the Raspberry makes decisions according to the temperatu
 
 ### Main hardware components
 - 1 - Raspberry Pi 2 Model B
+- 1 - Arduino Nano
 - 4 - DHT22 temperature and humidity sensors
 - 1 - DS18B20 temperature sensor
 - 2 - Chirp soil moisture sensors
