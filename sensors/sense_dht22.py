@@ -1,21 +1,22 @@
 ### DHT22 SENSORS ###
 
-##Greenhouse sensor1
-#adafruit_dht.DHT22(board.D17)
-##Greenhouse sensor2
+##Greenhouse sensor1 - sensor_name = x
+#adafruit_dht.DHT22(board.D17) 
+##Greenhouse sensor2 - sensor_name = x
 #adafruit_dht.DHT22(board.D22)
-##Greenhouse cabinet sensor
+##Greenhouse cabinet sensor - sensor_name = x
 #adafruit_dht.DHT22(board.D27)
-##Outside sensor
+##Outside sensor - sensor_name = x
 #adafruit_dht.DHT22(board.D18)
 
 import time
 import board
 import adafruit_dht
 from datetime import datetime
+from upload import upload
  
 
-def sense_temphum(device, location):
+def sense_dht22(sensor_name, device):
 
     counter = 0
     avg_temp = 0
@@ -34,7 +35,7 @@ def sense_temphum(device, location):
             humidity = device.humidity
 
             # Not counting false temperature spikes
-            if temperature > -5 and temperature < 45 and humidity > 0 and humidity < 100:
+            if temperature > -8 and temperature < 45 and humidity > 0 and humidity < 100:
                 avg_temp += temperature
                 avg_hum += humidity
                 counter += 1
@@ -51,15 +52,16 @@ def sense_temphum(device, location):
     
         time.sleep(4.0)
 
-    data_list.append(location)
+    data_list.append(sensor_name)
     data_list.append(round(avg_temp/counter, 1))
     data_list.append(round(avg_hum/counter, 1))
+    data_list.append(None) # Moisture = None
     now = datetime.now()
     data_list.append(now.strftime("%Y-%m-%d %H:%M:%S"))
 
     print(
         "{}, Temp: {:.1f} C    Humidity: {:.1f}%, {}".format(
-            location,
+            sensor_name,
             avg_temp/counter,
             avg_hum/counter,
             now
@@ -67,5 +69,7 @@ def sense_temphum(device, location):
     )
     
     return data_list
+
+    upload(data_list)
 
 
