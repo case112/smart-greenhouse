@@ -4,10 +4,10 @@
 import os
 import time
 from datetime import datetime
+from upload import upload
 
 
-def sense_water():
-    location = 'Barrel'
+def sense_ds18b20(sensor_name):
     data_list = []
     temperature = 0
 
@@ -25,8 +25,10 @@ def sense_water():
         temp_c = float(temp_string)/1000.0
         temperature = temp_c
 
-    data_list.append(location)
+    data_list.append(sensor_name)
     data_list.append(round(temperature, 1))
+    data_list.append(None) # Humidity
+    data_list.append(None) # Moisture
     now = datetime.now()
     data_list.append(now.strftime("%Y-%m-%d %H:%M:%S"))
     time.sleep(2)
@@ -34,3 +36,4 @@ def sense_water():
     print(data_list)
     return data_list
 
+    upload(data_list)

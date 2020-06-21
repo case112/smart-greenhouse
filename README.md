@@ -23,7 +23,7 @@ In addiditon to logging the Raspberry makes decisions according to the temperatu
 - 1 - 4x 12V realy module
 - 1 - Double BTS7960B DC 43A motor driver
 - 6 - Stop swiches to get info about window movement/state and to stop over-extension
-- 2 - DC Motors for window movement
+- 2 - DC motors for window movement
 - 1 - DC water pump
 - 1 - 12V battery
 - 1 - 12V battery charger

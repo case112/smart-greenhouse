@@ -1,8 +1,9 @@
 import chirp
 import time
 from datetime import datetime
+from upload import upload
 
-def sense_soil(sensor, min, max, address):
+def sense_chirp(sensor_name, min, max, address):
 
     # The highest and lowest calibrated values
     min_moist = min
@@ -66,13 +67,16 @@ def sense_soil(sensor, min, max, address):
     
         time.sleep(4.0)
 
-    data_list.append(sensor)
-    data_list.append(int(avg_moist/counter))
-    data_list.append(round(avg_moist_percent/counter, 1))
+    data_list.append(sensor_name)
     data_list.append(round(avg_temp/counter, 1))
+    #data_list.append(int(avg_moist/counter)) #Moisture value
+    data_list.append(None) #Humidity
+    data_list.append(round(avg_moist_percent/counter, 1))
     now = datetime.now()
     data_list.append(now.strftime("%Y-%m-%d %H:%M:%S"))
 
     print(data_list)
     
     return data_list
+
+    upload(data_list)
