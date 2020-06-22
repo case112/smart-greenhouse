@@ -1,14 +1,13 @@
 import RPi.GPIO as gpio
 import time
 from datetime import datetime
+from upload import upload
 
-
-def state():
+def window_state(state_name):
 
     counter = 0
     value = 0
     data_list = []
-    sensor = 'S1-2'
 
     while counter < 5:
         gpio.setmode(gpio.BCM)
@@ -30,11 +29,13 @@ def state():
     else:
         position = True
 
-    data_list.append(sensor)
+    data_list.append(state_name)
     data_list.append(position)
+    data_list.append(None) #Value
     now = datetime.now()
     data_list.append(now.strftime("%Y-%m-%d %H:%M:%S"))
     
     return data_list
 
+    upload(data_list)
 
