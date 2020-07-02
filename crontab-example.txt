@@ -1,0 +1,18 @@
+# For more information see the manual pages of crontab(5) and cron(8)
+# 
+# m h  dom mon dow   command
+
+# Charges greenhouse  battery every day at 21.09
+9 21 * * * python3 /home/pi/Desktop/smart-greenhouse/battery/charge.py &> /home/pi/Desktop/logs/battery_log.txt
+
+# Reads and uploads Greenhouse DHT22 sensors every hour
+0 * * * * python3 /home/pi/Desktop/smart-greenhouse/temphumidity/upload_greenhouse.py 2> /home/pi/Desktop/logs/dht22_log.txt
+
+# Reads and uploads Greenhouse Chirp sensors every 2hrs
+0 */2 * * * python3 /home/pi/Desktop/smart-greenhouse/soil/upload_soil.py 2> /home/pi/Desktop/logs/chirp_log.txt
+
+# Reads and uploads Outside and cabinet DHT22 sensors every 2hrs
+5 */2 * * * python3 /home/pi/Desktop/smart-greenhouse/temphumidity/upload_cabinet_outside.py 2> /home/pi/Desktop/logs/dht22_log.txt
+
+# Measures window state every 20 mins in range of 4.00-23.00
+*/20 04-23 * * * python3 /home/pi/Desktop/smart-greenhouse/windows/upload_state.py
