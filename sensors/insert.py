@@ -5,7 +5,7 @@ from decouple import config
 
 def insert(data):
 
-    sensor_name = data[0]
+    sensor_name_id = data[0]
     temperature = data[1]
     humidity = data[2]
     moisture = data[3]
@@ -16,7 +16,7 @@ def insert(data):
 
     postgres_insert_query = """
                             INSERT INTO data_sensor (
-                                sensor_name,
+                                sensor_name_id,
                                 temperature,
                                 humidity,
                                 moisture,
@@ -27,7 +27,7 @@ def insert(data):
                             )
                             """
 
-    record_to_insert = (sensor_name, temperature, humidity, moisture, date)
+    record_to_insert = (sensor_name_id, temperature, humidity, moisture, date)
 
     con = None
     try:
@@ -38,7 +38,7 @@ def insert(data):
         cur = con.cursor()
         cur.execute(postgres_insert_query, record_to_insert)
         con.commit()
-        print (sensor_name, " successfully inserted into table")
+        print (sensor_name_id, " successfully inserted into table")
         
         # close the communication with the HerokuPostgres
         cur.close()
