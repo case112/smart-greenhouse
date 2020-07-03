@@ -5,11 +5,14 @@ import os
 import time
 from datetime import datetime
 from upload import upload
+import sys
+
 
 
 def sense_ds18b20(sensor_name):
     data_list = []
     temperature = 0
+    sensor_name = sys.argv[1]
 
     os.system('modprobe w1-gpio')
     os.system('modprobe w1-therm')
