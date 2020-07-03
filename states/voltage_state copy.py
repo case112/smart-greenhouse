@@ -26,7 +26,7 @@ def voltage_state(state_name):
     now = datetime.now()
     data_list.append(now.strftime("%Y-%m-%d %H:%M:%S"))
     
-    return data_list
+    print(data_list)
 
     upload(data_list)
     

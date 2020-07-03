@@ -67,8 +67,6 @@ def sense_dht22(sensor_name, device):
             now
         )
     )
-    
-    return data_list
 
     upload(data_list)
 

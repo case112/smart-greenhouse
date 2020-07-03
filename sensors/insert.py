@@ -9,7 +9,7 @@ def insert(data):
     temperature = data[1]
     humidity = data[2]
     moisture = data[3]
-    date = data[4]
+    created_at = data[4]
 
     # Read database connection url from .env
     DATABASE_URL = config('DATABASE_URL')
@@ -20,14 +20,14 @@ def insert(data):
                                 temperature,
                                 humidity,
                                 moisture,
-                                date
+                                created_at
                             ) 
                             VALUES (
                                 %s, %s, %s, %s, %s
                             )
                             """
 
-    record_to_insert = (sensor_name_id, temperature, humidity, moisture, date)
+    record_to_insert = (sensor_name_id, temperature, humidity, moisture, created_at)
 
     con = None
     try:

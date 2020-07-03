@@ -34,6 +34,4 @@ def sense_ds18b20(sensor_name):
     time.sleep(2)
 
     print(data_list)
-    return data_list
-
     upload(data_list)

@@ -76,7 +76,5 @@ def sense_chirp(sensor_name, min, max, address):
     data_list.append(now.strftime("%Y-%m-%d %H:%M:%S"))
 
     print(data_list)
-    
-    return data_list
 
     upload(data_list)
