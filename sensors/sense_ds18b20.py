@@ -1,6 +1,10 @@
 ## Sensor path might differ
 ## temp_sensor = '/sys/bus/w1/devices/28-03168b33a0ff/w1_slave'
 
+## RUN
+# water-1 = 6
+# python3 sense_ds18b20.py sensor_name
+
 import os
 import time
 from datetime import datetime
@@ -12,7 +16,6 @@ import sys
 def sense_ds18b20(sensor_name):
     data_list = []
     temperature = 0
-    sensor_name = sys.argv[1]
 
     os.system('modprobe w1-gpio')
     os.system('modprobe w1-therm')
@@ -38,3 +41,6 @@ def sense_ds18b20(sensor_name):
 
     print(data_list)
     upload(data_list)
+
+sensor_name = sys.argv[1]
+sense_ds18b20(sensor_name)

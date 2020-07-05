@@ -1,20 +1,27 @@
 ### DHT22 SENSORS ###
 
-##Greenhouse sensor1 - sensor_name = x
-#adafruit_dht.DHT22(board.D17) 
-##Greenhouse sensor2 - sensor_name = x
+##Greenhouse sensor1 - sensor_name = 1
+#adafruit_dht.DHT22(board.D17)
+ 
+##Greenhouse sensor2 - sensor_name = 2
 #adafruit_dht.DHT22(board.D22)
-##Greenhouse cabinet sensor - sensor_name = x
+
+##Greenhouse cabinet sensor - sensor_name = 5
 #adafruit_dht.DHT22(board.D27)
-##Outside sensor - sensor_name = x
+
+##Outside sensor - sensor_name = 7
 #adafruit_dht.DHT22(board.D18)
+
+## RUN
+# python3 sense_dht22.py sensor_name
 
 import time
 import board
 import adafruit_dht
+import sys
 from datetime import datetime
 from upload import upload
- 
+
 
 def sense_dht22(sensor_name, device):
 
@@ -70,4 +77,15 @@ def sense_dht22(sensor_name, device):
 
     upload(data_list)
 
+sensor_name = int(sys.argv[1])
 
+if sensor_name == 1:
+    device = adafruit_dht.DHT22(board.D17)
+elif sensor_name == 2:
+    device = adafruit_dht.DHT22(board.D22)
+elif sensor_name == 5:
+    device = adafruit_dht.DHT22(board.D27)
+elif sensor_name == 7:
+    device = adafruit_dht.DHT22(board.D18)
+
+sense_dht22(sensor_name, device)

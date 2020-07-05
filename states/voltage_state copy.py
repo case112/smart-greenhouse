@@ -4,6 +4,11 @@ import serial
 import time
 from datetime import datetime
 from upload import upload
+import sys
+
+# RUN
+#state_name = 10
+# python3 voltage_state.py 10
 
 
 counter = 0
@@ -30,4 +35,6 @@ def voltage_state(state_name):
 
     upload(data_list)
     
+state_name = sys.argv[1]
 
+voltage_state(state_name)

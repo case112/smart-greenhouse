@@ -2,12 +2,13 @@ import chirp
 import time
 from datetime import datetime
 from upload import upload
+import sys
 
-def sense_chirp(sensor_name, min, max, address):
+def sense_chirp(sensor_name, min_moist, max_moist, address):
 
     # The highest and lowest calibrated values
-    min_moist = min
-    max_moist = max
+    #min_moist = min
+    #max_moist = max
 
     counter = 0
     avg_moist = 0
@@ -78,3 +79,17 @@ def sense_chirp(sensor_name, min, max, address):
     print(data_list)
 
     upload(data_list)
+
+sensor_name = int(sys.argv[1])
+
+if sensor_name == 1:
+    min_moist = 200
+    max_moist = 840
+    address = 0x24
+else:
+    #same values for now
+    min_moist = 200
+    max_moist = 840
+    address = 0x24
+
+sense_chirp(sensor_name, min_moist, max_moist, address)
