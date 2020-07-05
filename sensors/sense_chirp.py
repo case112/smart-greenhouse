@@ -82,10 +82,10 @@ def sense_chirp(sensor_name, min_moist, max_moist, address):
 
 sensor_name = int(sys.argv[1])
 
-if sensor_name == 1:
+if sensor_name == 3:
     min_moist = 200
     max_moist = 840
-    address = 0x24
+    address = 0x45
 else:
     #same values for now
     min_moist = 200
