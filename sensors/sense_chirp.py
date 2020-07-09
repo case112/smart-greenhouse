@@ -72,7 +72,7 @@ def sense_chirp(sensor_name, min_moist, max_moist, address):
     
         except RuntimeError as error:
             print(error.args[0])
-            logging.error('RuntimeError@sense_chirp:', sensor_name, exc_info=error)
+            logging.error('RuntimeError@sense_chirp:', exc_info=error)
     
         time.sleep(4.0)
 

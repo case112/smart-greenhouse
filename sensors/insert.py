@@ -52,7 +52,7 @@ def insert(data):
     except Exception as error:
         print('Could not connect')
         print('Cause: {}'.format(error))
-        logging.error('Exeption@insert:', data[0], exc_info=error)
+        logging.error('Exeption@insert:', exc_info=error)
 
     finally:
         # close the communication with the database server by calling the close()

@@ -19,7 +19,7 @@ def upload(data):
 
         except RuntimeError as error:
             print(error.args[0])
-            logging.error('RuntimeError@upload:', data[0], exc_info=error)
+            logging.error('RuntimeError@upload:', exc_info=error)
 
         time.sleep(2.0)
         counter += 1
