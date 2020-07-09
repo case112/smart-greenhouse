@@ -1,7 +1,14 @@
 #echo DATABASE_URL=$(heroku config:get DATABASE_URL -a appname) > conf.txt
+import logging
 import psycopg2
 import os
 from decouple import config
+
+logging.basicConfig(
+    filename='sensors.log',
+    format='\n[%(asctime)s] %(levelname)-8s %(message)s',
+    level=logging.DEBUG,
+    datefmt='%Y-%m-%d %H:%M:%S')
 
 def insert(data):
 
@@ -45,6 +52,7 @@ def insert(data):
     except Exception as error:
         print('Could not connect')
         print('Cause: {}'.format(error))
+        logging.error('Exeption@insert:', data[0], exc_info=error)
 
     finally:
         # close the communication with the database server by calling the close()

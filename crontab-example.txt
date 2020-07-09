@@ -2,17 +2,27 @@
 # 
 # m h  dom mon dow   command
 
-# Charges greenhouse  battery every day at 21.09
-9 21 * * * python3 /home/pi/Desktop/smart-greenhouse/battery/charge.py &> /home/pi/Desktop/logs/battery_log.txt
+# Reads and uploads Greenhouse DHT22 sensor every hour
+1 * * * * python3 /home/pi/Desktop/smart-greenhouse/sensors/sense_dht22.py 1
 
-# Reads and uploads Greenhouse DHT22 sensors every hour
-0 * * * * python3 /home/pi/Desktop/smart-greenhouse/temphumidity/upload_greenhouse.py 2> /home/pi/Desktop/logs/dht22_log.txt
+# Reads and uploads Greenhouse DHT22 sensor every hour
+1 * * * * python3 /home/pi/Desktop/smart-greenhouse/sensors/sense_dht22.py 2
 
-# Reads and uploads Greenhouse Chirp sensors every 2hrs
-0 */2 * * * python3 /home/pi/Desktop/smart-greenhouse/soil/upload_soil.py 2> /home/pi/Desktop/logs/chirp_log.txt
+# Reads and uploads Cabinet DHT22 sensor every second  hour
+2 */2 * * * python3 /home/pi/Desktop/smart-greenhouse/sensors/sense_dht22.py 5
 
-# Reads and uploads Outside and cabinet DHT22 sensors every 2hrs
-5 */2 * * * python3 /home/pi/Desktop/smart-greenhouse/temphumidity/upload_cabinet_outside.py 2> /home/pi/Desktop/logs/dht22_log.txt
+# Reads and uploads Outside DHT22 sensor every second hour
+4 */2 * * * python3 /home/pi/Desktop/smart-greenhouse/sensors/sense_dht22.py 7
 
-# Measures window state every 20 mins in range of 4.00-23.00
-*/20 04-23 * * * python3 /home/pi/Desktop/smart-greenhouse/windows/upload_state.py
+
+# Reads and uploads Greenhouse Chirp sensor every second hour
+5 */2 * * * python3 /home/pi/Desktop/smart-greenhouse/sensors/sense_chirp.py 3
+
+# Reads and uploads window state every 20 mins in range of 4.00-23.00
+*/20 04-23 * * * python3 /home/pi/Desktop/smart-greenhouse/states/window_state.py 8
+
+# Reads and uploads window state every 20 mins in range of 4.00-23.00
+*/20 04-23 * * * python3 /home/pi/Desktop/smart-greenhouse/states/window_state.py 9
+
+# Reads and uploads voltage state every 20 mins in range of 4.00-23.00
+7,27,47 04-23 * * * python3 /home/pi/Desktop/smart-greenhouse/states/voltage_state.py 10

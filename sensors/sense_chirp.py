@@ -1,8 +1,15 @@
 import chirp
+import logging
 import time
 from datetime import datetime
 from upload import upload
 import sys
+
+logging.basicConfig(
+    filename='sensors.log',
+    format='\n[%(asctime)s] %(levelname)-8s %(message)s',
+    level=logging.DEBUG,
+    datefmt='%Y-%m-%d %H:%M:%S')
 
 def sense_chirp(sensor_name, min_moist, max_moist, address):
 
@@ -65,6 +72,7 @@ def sense_chirp(sensor_name, min_moist, max_moist, address):
     
         except RuntimeError as error:
             print(error.args[0])
+            logging.error('RuntimeError@sense_chirp:', sensor_name, exc_info=error)
     
         time.sleep(4.0)
 

@@ -18,9 +18,16 @@
 import time
 import board
 import adafruit_dht
+import logging
 import sys
 from datetime import datetime
 from upload import upload
+
+logging.basicConfig(
+    filename='sensors.log',
+    format='\n[%(asctime)s] %(levelname)-8s %(message)s',
+    level=logging.DEBUG,
+    datefmt='%Y-%m-%d %H:%M:%S')
 
 
 def sense_dht22(sensor_name, device):
@@ -56,6 +63,8 @@ def sense_dht22(sensor_name, device):
         except RuntimeError as error: 
             # Errors happen fairly often, DHT's are hard to read, just keep going
             print(error.args[0])
+            logging.error('RuntimeError@sense_dht22:', sensor_name, exc_info=error)
+
     
         time.sleep(4.0)
 

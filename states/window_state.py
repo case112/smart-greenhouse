@@ -6,6 +6,8 @@ from upload import upload
 
 #Window 1 = gpio(16)
 #Window 2 = gpio(24)
+# python3 window_state.py 8
+# python3 window_state.py 9
 
 
 def window_state(state_name, window_gpio):
