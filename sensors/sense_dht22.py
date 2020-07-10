@@ -86,6 +86,27 @@ def sense_dht22(sensor_name, device):
 
     upload(data_list)
 
+
+def call_dht22(sensor_name, device):
+
+    token = False
+
+    # Try to take measurement multiple times in case of RuntimeError
+    while not token:
+        try:
+            data = sense_dht22(sensor_name, device)
+            token = True
+            print('Token True')
+            
+        except RuntimeError as error:
+            print(error.args[0])
+
+        time.sleep(2.0)
+
+    return data
+
+
+
 sensor_name = int(sys.argv[1])
 
 if sensor_name == 1:
@@ -97,4 +118,5 @@ elif sensor_name == 5:
 elif sensor_name == 7:
     device = adafruit_dht.DHT22(board.D18)
 
-sense_dht22(sensor_name, device)
+call_dht22(sensor_name, device)
+
