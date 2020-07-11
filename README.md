@@ -30,14 +30,11 @@ In addiditon to logging the Raspberry makes decisions according to the temperatu
 
 ### Software
 
-The software consists of 5 main components. Most of it is currently being updated.
-- battery - making sure that battery is topped up at all times (voltage check is currently under development)
-- soil - measuring and logging soil data
-- temphumidity - measuring and logging temperature and humidity data
-- water - measuring, logging water temperature and activating pump
-- windows - measuring and logging window data
-- logging errors (coming soon)
-
+The software consists of 4 main components.
+- sensors - sensing and uploading the measurements
+- states - measuring and uploading different values/states
+- actions - makes decisions based on measured data (under works)
+- logging errors and exceptions (under works)
 
 
 # Installation
@@ -87,7 +84,5 @@ on another address but Raspberry Pi is not able to 'see' that new address.
 - [Arduino sketch to set address on Chirp](https://gist.github.com/Miceuz/3f40a1614c749e04796a "Link")
 
 ## Todos:
-- Setting up with new DB models
 - Log system, everyting to csv and then upload to db?
-- Voltage
-- Example of crontab
+- actions

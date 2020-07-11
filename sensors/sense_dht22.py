@@ -1,14 +1,10 @@
 ### DHT22 SENSORS ###
-
 ##Greenhouse sensor1 - sensor_name = 1
 #adafruit_dht.DHT22(board.D17)
- 
 ##Greenhouse sensor2 - sensor_name = 2
 #adafruit_dht.DHT22(board.D22)
-
 ##Greenhouse cabinet sensor - sensor_name = 5
 #adafruit_dht.DHT22(board.D27)
-
 ##Outside sensor - sensor_name = 7
 #adafruit_dht.DHT22(board.D18)
 
@@ -103,7 +99,6 @@ def call_dht22(sensor_name, device):
 
         time.sleep(2.0)
 
-    return data
 
 
 
